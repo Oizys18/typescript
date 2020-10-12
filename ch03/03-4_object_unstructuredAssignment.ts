@@ -48,3 +48,6 @@ console.log(detail) // address 1,2,3이 나온다.
 let coord = {...{x:0,z:3},...{y:1}}
 console.log(coord)
 
+
+
+
