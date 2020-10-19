@@ -29,6 +29,44 @@ let printMe2: (string, number) => void = function (
 type stringNumberFunc = (string, number) => void;
 let f: stringNumberFunc = function (a: string, b: number): void {};
 let g: stringNumberFunc = function (c: string, d: number): void {};
+// 이런 식으로 함수의 타입 (함수 시그니처)를 명시하면 매개변수의 개수나 타입, 반환타입이 다른 함수를 선언하는 잘못을 미연에 방지할 수 있다.
+
+// undefined 주의 사항
+
+// undefined 고려안하고 작성할 경우
+interface INameable {
+  name: string;
+}
+
+function getName(o: INameable) {
+  return o.name;
+} //getName은 INameable 타입의 매개변수를 요구한다.
+
+let n = getName(undefined); //undefined로 호출해도 구문오류가 발생하지 않는다.
+// undefined는 최하위 타입이므로 INameable을 상속하는 자식 타입으로 간주된다.
+console.log(n);
+
+// 하지만 실행해보면 o.name이 undefined.name이 되어 "cannot read name of 'undefined"에러가 발생한다.
+// 이런 오류를 방지하기 위해 매개변수가 undefined인지 판별하는 코드를 작성해야 한다.
+//>>>>>>>>>>>>>
+
+interface INameable2 {
+  name: string;
+}
+
+function getName2(o: INameable2) {
+  return o != undefined ? o.name : "unknown name";
+}
+let n2 = getName(undefined); // unknown name
+let n3 = getName({ name: "Jack" }); // Jack
+
+// 만약 선택 속성 인터페이스라면,
+
+function getName3(o: INameable2) {
+  return o != undefined && o.name ? o.name : "unknown name"; //값이 있는지 ? 
+}
 
 
-// undefined 주의 사항 
+
+
+// 선택적 매개변수
