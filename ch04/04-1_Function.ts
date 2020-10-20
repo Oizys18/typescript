@@ -67,6 +67,12 @@ function getName3(o: INameable2) {
 }
 
 
-
-
 // 선택적 매개변수
+// 인터페이스 선택 속성처럼 함수의 매개변수에도 물음표 붙여서 선택적 매개변수를 만들 수 있다.
+
+function fn(arg1:string, arg?:number):void{}
+// 선택적 매개변수가 있는 함수의 시그니처는 타입 뒤에 물음표를 붙인다. 
+
+type OptionalArgFunc = (string,number?)=> void
+
+
