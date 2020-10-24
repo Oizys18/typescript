@@ -27,7 +27,9 @@ const calc = (value:number, cb: (number)=>void):void => {
     function multiply(a,b) {return a*b}
 
     let result = multiply(add(1,2), value)
-    
+
     cb(result)
 }
 calc(30, (result:number)=> console.log(`result if ${result}`))
+
+
