@@ -55,3 +55,4 @@ export type KeyValueType = {
 export const makeObject2 = (key:string, value:string): KeyValueType => ({[key]:value})
 
 console.log(makeObject2('key','value')) // {key:value}
+
